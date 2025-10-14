@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Minesweeper</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- 🧠 Matrix Canvas -->
+  <canvas id="matrix"></canvas>
+
+  <!-- 🎮 Game Container -->
   <div class="container">
     <h1>Minesweeper</h1>
     <div id="board"></div>
-    <div id="message"></div>
-    <button id="restartBtn">Restart Game</button>
+    <div id="gameOver">💥 Game Over!</div>
   </div>
 
   <script src="script.js"></script>
 </body>
 </html>
+
