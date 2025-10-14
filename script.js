@@ -6,59 +6,66 @@ const board = document.getElementById('board');
 let boardArray = [];
 
 // 🎵 Sounds
-const clickSound = new Audio("Sounds/click.wav");
-const flagSound = new Audio("Sounds/Flag.mp3");
-const explosionSound = new Audio("Sounds/Explosion.mp3");
+const clickSound = new Audio("sounds/click.wav");
+const flagSound = new Audio("sounds/flag.mp3");
+const explosionSound = new Audio("sounds/explosion.mp3");
 
-// Initialize board
-for (let r = 0; r < rows; r++) {
-    boardArray[r] = [];
-    for (let c = 0; c < cols; c++) {
-        const cell = document.createElement('div');
-        cell.classList.add('cell');
-        cell.dataset.row = r;
-        cell.dataset.col = c;
-        board.appendChild(cell);
-        boardArray[r][c] = { mine: false, revealed: false, element: cell, neighborMines: 0 };
-        cell.addEventListener('click', () => {
-            clickSound.play();
-            revealCell(r, c);
-        });
-        cell.addEventListener('contextmenu', (e) => {
-            e.preventDefault();
-            toggleFlag(r, c);
-        });
-    }
-}
+// 🧠 Main Initialization Function
+function initGame() {
+    board.innerHTML = ''; // clear previous cells
+    boardArray = [];
+    document.getElementById("gameOver").classList.remove("show");
 
-// Place mines
-let minesPlaced = 0;
-while (minesPlaced < minesCount) {
-    const r = Math.floor(Math.random() * rows);
-    const c = Math.floor(Math.random() * cols);
-    if (!boardArray[r][c].mine) {
-        boardArray[r][c].mine = true;
-        minesPlaced++;
-    }
-}
-
-// Count neighbor mines
-for (let r = 0; r < rows; r++) {
-    for (let c = 0; c < cols; c++) {
-        if (boardArray[r][c].mine) continue;
-        let count = 0;
-        for (let dr = -1; dr <= 1; dr++) {
-            for (let dc = -1; dc <= 1; dc++) {
-                const nr = r + dr;
-                const nc = c + dc;
-                if (nr >= 0 && nr < rows && nc >= 0 && nc < cols && boardArray[nr][nc].mine) count++;
-            }
+    // Initialize board
+    for (let r = 0; r < rows; r++) {
+        boardArray[r] = [];
+        for (let c = 0; c < cols; c++) {
+            const cell = document.createElement('div');
+            cell.classList.add('cell');
+            cell.dataset.row = r;
+            cell.dataset.col = c;
+            board.appendChild(cell);
+            boardArray[r][c] = { mine: false, revealed: false, element: cell, neighborMines: 0 };
+            cell.addEventListener('click', () => {
+                clickSound.play();
+                revealCell(r, c);
+            });
+            cell.addEventListener('contextmenu', (e) => {
+                e.preventDefault();
+                toggleFlag(r, c);
+            });
         }
-        boardArray[r][c].neighborMines = count;
+    }
+
+    // Place mines
+    let minesPlaced = 0;
+    while (minesPlaced < minesCount) {
+        const r = Math.floor(Math.random() * rows);
+        const c = Math.floor(Math.random() * cols);
+        if (!boardArray[r][c].mine) {
+            boardArray[r][c].mine = true;
+            minesPlaced++;
+        }
+    }
+
+    // Count neighbor mines
+    for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+            if (boardArray[r][c].mine) continue;
+            let count = 0;
+            for (let dr = -1; dr <= 1; dr++) {
+                for (let dc = -1; dc <= 1; dc++) {
+                    const nr = r + dr;
+                    const nc = c + dc;
+                    if (nr >= 0 && nr < rows && nc >= 0 && nc < cols && boardArray[nr][nc].mine) count++;
+                }
+            }
+            boardArray[r][c].neighborMines = count;
+        }
     }
 }
 
-// Reveal cell
+// 🔎 Reveal cell
 function revealCell(r, c) {
     const cellObj = boardArray[r][c];
     if (cellObj.revealed) return;
@@ -87,7 +94,7 @@ function revealCell(r, c) {
     }
 }
 
-// Reveal all mines
+// 💣 Reveal all mines
 function revealAllMines() {
     for (let r = 0; r < rows; r++) {
         for (let c = 0; c < cols; c++) {
@@ -99,7 +106,7 @@ function revealAllMines() {
     }
 }
 
-// Flagging
+// 🚩 Flagging
 function toggleFlag(r, c) {
     const cellObj = boardArray[r][c];
     if (cellObj.revealed) return;
@@ -110,6 +117,15 @@ function toggleFlag(r, c) {
         cellObj.element.textContent = '🚩';
     }
 }
+
+// 🔄 Restart button
+const restartBtn = document.getElementById("restartBtn");
+restartBtn.addEventListener("click", () => {
+    initGame();
+});
+
+// 🚀 Initialize once at page load
+initGame();
 
 // 🌌 MATRIX BACKGROUND EFFECT
 const canvas = document.getElementById("matrix");
@@ -147,4 +163,3 @@ window.addEventListener("resize", () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 });
-
