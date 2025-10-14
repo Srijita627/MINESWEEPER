@@ -1,4 +1,4 @@
-# 🧩 Minesweeper Game — JavaScript Edition
+# 🧩 Minesweeper Game
 
 ## 🎮 Overview
 This is a **modern Minesweeper game** built using **HTML, CSS, and JavaScript**, featuring smooth animations, sound effects, and a stylish **Matrix-style animated background**.  
@@ -23,11 +23,14 @@ Players can uncover cells, flag mines, and restart the game anytime with a singl
 - **Audio API** – For sound feedback  
 
 ---
-
-## 👩‍💻 Author
-**Srijita Datta**  
-- 💼 [LinkedIn](https://www.linkedin.com/in/srijita-datta-b06313318/)  
-- 💻 [GitHub](https://github.com/Srijita627)  
-- 📧 dattasrijita1@gmail.com  
+---
+Made with ❤️ by **Srijita Datta**  
+[GitHub Profile](https://github.com/Srijita627) | [LinkedIn](https://www.linkedin.com/in/srijita-datta-b06313318/)
 
 ---
+
+## 📬 Feedback
+
+Feel free to ⭐️ the repo and give feedback!
+
+--- 
