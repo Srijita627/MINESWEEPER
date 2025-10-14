@@ -6,9 +6,9 @@ const board = document.getElementById('board');
 let boardArray = [];
 
 // 🎵 Sounds
-const clickSound = new Audio("sounds/click.wav");
-const flagSound = new Audio("sounds/flag.mp3");
-const explosionSound = new Audio("sounds/explosion.mp3");
+const clickSound = new Audio("Sounds/click.wav");
+const flagSound = new Audio("Sounds/Flag.mp3");
+const explosionSound = new Audio("Sounds/Explosion.mp3");
 
 // Initialize board
 for (let r = 0; r < rows; r++) {
@@ -147,3 +147,4 @@ window.addEventListener("resize", () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 });
+
