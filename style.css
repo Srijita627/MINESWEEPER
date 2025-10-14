@@ -1,0 +1,112 @@
+body {
+  background: radial-gradient(circle at top, #1a0033, #000814, #001220);
+  font-family: 'Poppins', sans-serif;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* 🎯 Game container */
+.container {
+  text-align: center;
+  background: #101020;
+  padding: 30px 40px;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+}
+
+/* 💣 Title styling */
+h1 {
+  color: #00ffff;
+  text-shadow: 0 0 15px #00ffff;
+  font-size: 2.3rem;
+  margin-bottom: 20px;
+}
+
+/* 🟦 Board */
+#board {
+  display: grid;
+  grid-template-columns: repeat(10, 40px);
+  grid-template-rows: repeat(10, 40px);
+  gap: 6px;
+  justify-content: center;
+}
+
+/* 🔳 Cell */
+.cell {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(145deg, #33334a, #1f1f35);
+  border-radius: 6px;
+  box-shadow: inset 2px 2px 4px #1a1a2f, inset -2px -2px 4px #2a2a4f;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cell:hover {
+  transform: scale(1.08);
+  background: linear-gradient(145deg, #444466, #2a2a44);
+}
+
+/* ✅ Revealed cells */
+.revealed {
+  background: #e0e0e0;
+  box-shadow: inset 1px 1px 3px #a0a0a0, inset -1px -1px 3px #fff;
+  transform: scale(1);
+}
+
+/* 💣 Bomb cell */
+.bomb {
+  background: #3a0000;
+  color: #ff4040;
+  box-shadow: 0 0 8px red, inset 0 0 8px red;
+}
+
+/* 🔢 Number coloring */
+.cell[data-num="1"] { color: #007bff; font-weight: 700; }
+.cell[data-num="2"] { color: #28a745; font-weight: 700; }
+.cell[data-num="3"] { color: #ffc107; font-weight: 700; }
+.cell[data-num="4"] { color: #dc3545; font-weight: 700; }
+.cell[data-num="5"] { color: #ff66cc; font-weight: 700; }
+.cell[data-num="6"] { color: #00ffff; font-weight: 700; }
+.cell[data-num="7"] { color: #ff6600; font-weight: 700; }
+.cell[data-num="8"] { color: #ffffff; font-weight: 700; }
+
+/* 💥 Game Over message */
+#message {
+  margin-top: 20px;
+  font-size: 2rem;
+  color: #ff4040;
+  text-shadow: 0 0 15px red;
+  font-weight: bold;
+  display: none;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.5); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* 🔁 Restart button */
+#restartBtn {
+  margin-top: 15px;
+  background: #00ffff;
+  border: none;
+  color: #000;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  display: none;
+}
+
+#restartBtn:hover {
+  background: #00cccc;
+  box-shadow: 0 0 10px #00ffff;
+}
