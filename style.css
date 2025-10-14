@@ -87,22 +87,66 @@ h1 {
 .cell[data-num="7"] { color: #ff6600; font-weight: 700; }
 .cell[data-num="8"] { color: #ffffff; font-weight: 700; }
 
-/* Game Over text */
+/* 💀 Flickering Game Over text */
 #gameOver {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0);
-  color: #ff4040;
-  font-size: 3rem;
-  font-weight: bold;
-  text-shadow: 0 0 25px red;
+  color: #ff1c1c;
+  font-size: 4rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  text-align: center;
   opacity: 0;
   transition: all 0.4s ease-in-out;
   z-index: 10;
+  animation: flicker 1.2s infinite alternate;
+  text-shadow:
+    0 0 15px #ff0000,
+    0 0 40px #ff3333,
+    0 0 80px #ff6666;
 }
 
+@keyframes flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    opacity: 1;
+    text-shadow:
+      0 0 5px #ff0000,
+      0 0 15px #ff0000,
+      0 0 30px #ff3333,
+      0 0 60px #ff6666;
+  }
+  20%, 24%, 55% {
+    opacity: 0.4;
+    text-shadow: none;
+  }
+}
+
+/* Make it appear on Game Over */
 #gameOver.show {
   transform: translate(-50%, -50%) scale(1);
   opacity: 1;
+}
+
+/* 🔄 Restart button */
+#restartBtn {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #00ff00;
+  color: black;
+  font-weight: bold;
+  box-shadow: 0 0 15px #00ff00, 0 0 40px #00ff00;
+  transition: all 0.3s ease-in-out;
+}
+
+#restartBtn:hover {
+  background: #00cc00;
+  transform: scale(1.1);
+  box-shadow: 0 0 25px #00ff00;
 }
