@@ -2,7 +2,7 @@
 
 ## 🎮 Overview
 This is a **modern Minesweeper game** built using **HTML, CSS, and JavaScript**, featuring smooth animations, sound effects, and a stylish **Matrix-style animated background**.  
-Players can uncover cells, flag mines, and restart the game anytime with a single click.
+Players can uncover cells, flag mines, and restart the game anytime with a single click!!
 
 ---
 🌐 **Play it here:** [https://srijita627.github.io/MINESWEEPER/](https://srijita627.github.io/MINESWEEPER/)
